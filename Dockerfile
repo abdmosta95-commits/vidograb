@@ -2,20 +2,24 @@ FROM node:20-bookworm-slim
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends ffmpeg python3 python3-pip \
-  && pip3 install --break-system-packages yt-dlp \
+  && (apt-get install -y --no-install-recommends yt-dlp \
+      || pip3 install --break-system-packages yt-dlp) \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-COPY backend/package*.json ./
+COPY backend/package.json backend/package-lock.json ./
 RUN npm ci --omit=dev
 
 COPY backend/ ./
 COPY frontend/ /frontend/
 
+RUN test -f server.js && test -f /frontend/index.html
+
 ENV NODE_ENV=production
 ENV API_PROVIDER=ytdlp
-ENV YTDLP_PATH=python3 -m yt_dlp
+ENV YTDLP_PATH=yt-dlp
+ENV PORT=10000
 
 EXPOSE 10000
 
