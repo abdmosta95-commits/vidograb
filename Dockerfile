@@ -19,7 +19,8 @@ RUN test -f server.js && test -f /frontend/index.html
 ENV NODE_ENV=production
 ENV API_PROVIDER=ytdlp
 ENV YTDLP_PATH=yt-dlp
-ENV PORT=10000
+
+# Render sets PORT automatically — do NOT hardcode it here
 
 EXPOSE 10000
 

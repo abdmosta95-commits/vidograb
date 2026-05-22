@@ -4,6 +4,7 @@ import cors from 'cors';
 import rateLimit from 'express-rate-limit';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { existsSync } from 'node:fs';
 import { downloadVideo } from './services/downloader.js';
 import { getCobaltInfo } from './services/cobaltProvider.js';
 import {
@@ -14,8 +15,9 @@ import {
 import { streamYtDlpDownload } from './services/ytdlpDownload.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const frontendPath = path.join(__dirname, '../frontend');
 const app = express();
-const PORT = process.env.PORT || 3001;
+const PORT = Number(process.env.PORT) || 3001;
 
 const config = {
   API_PROVIDER: process.env.API_PROVIDER || 'mock',
@@ -23,9 +25,10 @@ const config = {
   COBALT_API_KEY: process.env.COBALT_API_KEY,
   RAPIDAPI_KEY: process.env.RAPIDAPI_KEY,
   RAPIDAPI_HOST: process.env.RAPIDAPI_HOST,
-  YTDLP_PATH: process.env.YTDLP_PATH || 'python3 -m yt_dlp',
+  YTDLP_PATH: process.env.YTDLP_PATH || 'yt-dlp',
 };
 
+app.set('trust proxy', 1);
 app.use(cors());
 app.use(express.json({ limit: '16kb' }));
 
@@ -36,8 +39,7 @@ const limiter = rateLimit({
 });
 app.use('/api/', limiter);
 
-app.use(express.static(path.join(__dirname, '../frontend')));
-
+// ── API routes FIRST (before static files) ──
 app.get('/api/health', (_req, res) => {
   res.json({
     status: 'ok',
@@ -127,16 +129,26 @@ app.get('/api/stream', async (req, res) => {
   }
 });
 
-app.get('*', (_req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/index.html'));
+app.use('/api/*', (_req, res) => {
+  res.status(404).json({ error: 'API route not found.' });
+});
+
+// ── Static frontend ──
+if (existsSync(frontendPath)) {
+  app.use(express.static(frontendPath));
+} else {
+  console.error('Frontend folder missing at:', frontendPath);
+}
+
+app.get('*', (req, res) => {
+  if (req.path.startsWith('/api/')) {
+    return res.status(404).json({ error: 'API route not found.' });
+  }
+  res.sendFile(path.join(frontendPath, 'index.html'));
 });
 
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`\n  VidoGrab running → port ${PORT}`);
-  console.log(`  API provider    → ${config.API_PROVIDER}`);
-  if (config.API_PROVIDER === 'cobalt') {
-    console.log(`  Cobalt auth     → ${config.COBALT_API_KEY ? 'API Key' : 'Turnstile (JWT)'}\n`);
-  } else {
-    console.log('');
-  }
+  console.log(`VidoGrab running on port ${PORT}`);
+  console.log(`API provider: ${config.API_PROVIDER}`);
+  console.log(`Frontend path: ${frontendPath} (exists: ${existsSync(frontendPath)})`);
 });

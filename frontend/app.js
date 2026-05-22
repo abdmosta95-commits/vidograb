@@ -162,6 +162,15 @@ form.addEventListener('submit', async (e) => {
       body: JSON.stringify(body),
     });
 
+    const contentType = response.headers.get('content-type') || '';
+    if (!contentType.includes('application/json')) {
+      throw new Error(
+        response.status === 404
+          ? 'API not found — the server may still be starting. Wait 30 seconds and try again.'
+          : 'Server unavailable. If this is your first visit, wait ~50 seconds for Render to wake up, then retry.',
+      );
+    }
+
     const data = await response.json();
 
     if (!response.ok) {
