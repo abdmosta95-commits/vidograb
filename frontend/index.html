@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VidoGrab — Free Video Downloader | TikTok, Pinterest, Douyin, X & More</title>
+  <meta name="description" content="Download videos from TikTok, Pinterest, Douyin, X (Twitter), Tumblr & LinkedIn in HD — no watermark, no signup. Fast, free & secure online video downloader." />
+  <meta name="keywords" content="video downloader, TikTok downloader, Pinterest video download, Douyin downloader, X video download, Tumblr downloader, LinkedIn video download, no watermark, HD video download, VidoGrab" />
+  <meta name="robots" content="index, follow" />
+  <meta name="author" content="VidoGrab" />
+  <link rel="canonical" href="https://vidograb.com/" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" href="/assets/favicon-32x32.png" type="image/png" sizes="32x32" />
+  <link rel="icon" href="/assets/favicon-16x16.png" type="image/png" sizes="16x16" />
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://vidograb.com/" />
+  <meta property="og:title" content="VidoGrab — Free HD Video Downloader" />
+  <meta property="og:description" content="Download videos from TikTok, Pinterest, Douyin, X, Tumblr & LinkedIn — no watermark, no account required." />
+  <meta property="og:site_name" content="VidoGrab" />
+  <meta property="og:locale" content="en_US" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="VidoGrab — Free HD Video Downloader" />
+  <meta name="twitter:description" content="Download videos from TikTok, Pinterest, Douyin, X, Tumblr & LinkedIn in HD quality." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "name": "VidoGrab",
+    "url": "https://vidograb.com",
+    "description": "Free online video downloader for TikTok, Pinterest, Douyin, X, Tumblr and LinkedIn. Download HD videos without watermark.",
+    "applicationCategory": "MultimediaApplication",
+    "operatingSystem": "Any",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    },
+    "featureList": [
+      "TikTok video download without watermark",
+      "Pinterest video download HD",
+      "Douyin video download",
+      "X Twitter video download",
+      "Tumblr video download",
+      "LinkedIn video download"
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div class="bg-gradient"></div>
+  <div class="bg-grid"></div>
+
+  <header class="header">
+    <a href="/" class="logo-link" aria-label="VidoGrab home">
+      <img src="/assets/logo-mark.png" srcset="/assets/logo-mark.png 1x, /assets/logo-mark@2x.png 2x" alt="" class="logo-mark" width="36" height="36" decoding="async" />
+      <span class="logo-text">Vido<span class="logo-accent">Grab</span></span>
+    </a>
+    <nav class="nav" aria-label="Main navigation">
+      <a href="#features">Features</a>
+      <a href="#platforms">Platforms</a>
+      <a href="#faq">FAQ</a>
+      <a href="/contact.html">Contact</a>
+    </nav>
+  </header>
+
+  <main class="main">
+    <section class="hero">
+      <div class="badge">Free · Fast · No Sign-up</div>
+      <h1 class="hero-title">
+        Download Videos from
+        <span class="gradient-text">Any Platform</span>
+      </h1>
+      <p class="hero-subtitle">
+        Paste your video link, pick a platform, and hit download — we handle the rest.
+      </p>
+    </section>
+
+    <section class="downloader-card" id="downloader" aria-label="Video downloader">
+      <form id="download-form" class="download-form">
+        <div class="input-group">
+          <label for="url-input">Video URL</label>
+          <div class="url-field">
+            <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            </svg>
+            <input
+              type="url"
+              id="url-input"
+              name="url"
+              placeholder="https://www.tiktok.com/@user/video/..."
+              autocomplete="off"
+              required
+            />
+            <button type="button" id="paste-btn" class="paste-btn" title="Paste from clipboard" aria-label="Paste from clipboard">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <rect x="9" y="9" width="13" height="13" rx="2"/>
+                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label for="platform-select">Platform</label>
+          <div class="select-field">
+            <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <rect x="2" y="3" width="20" height="14" rx="2"/>
+              <path d="M8 21h8M12 17v4"/>
+            </svg>
+            <select id="platform-select" name="platform" required>
+              <option value="tiktok">🎵 TikTok Downloader</option>
+              <option value="pinterest">📌 Pinterest Downloader</option>
+              <option value="douyin">🎶 Douyin Downloader</option>
+              <option value="x">𝕏 X Downloader</option>
+              <option value="tumblr">📝 Tumblr Downloader</option>
+              <option value="linkedin">💼 LinkedIn Downloader</option>
+            </select>
+            <svg class="select-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path d="M6 9l6 6 6-6"/>
+            </svg>
+          </div>
+        </div>
+
+        <div id="turnstile-wrap" class="turnstile-wrap hidden">
+          <p class="turnstile-label">Security verification (required by Cobalt)</p>
+          <div id="turnstile-widget"></div>
+          <p id="turnstile-status" class="turnstile-status"></p>
+        </div>
+
+        <button type="submit" id="download-btn" class="download-btn">
+          <span class="btn-text">Download Video</span>
+          <span class="btn-loader hidden">
+            <span class="spinner"></span>
+            Fetching...
+          </span>
+        </button>
+      </form>
+
+      <div id="error-box" class="error-box hidden" role="alert"></div>
+    </section>
+
+    <section id="results" class="results hidden" aria-live="polite">
+      <div class="results-header">
+        <h2>Download Results</h2>
+        <span id="detected-platform" class="platform-tag"></span>
+      </div>
+      <div class="results-body">
+        <div class="video-preview">
+          <img id="thumbnail" src="" alt="Video thumbnail preview" />
+          <div class="play-overlay" aria-hidden="true">▶</div>
+        </div>
+        <div class="video-info">
+          <h3 id="video-title">—</h3>
+          <p id="video-author" class="author">—</p>
+          <div id="quality-list" class="quality-list"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="platforms" id="platforms">
+      <h2 class="section-title">Supported Platforms</h2>
+      <div class="platform-grid">
+        <div class="platform-chip"><span>🎵</span> TikTok</div>
+        <div class="platform-chip"><span>📌</span> Pinterest</div>
+        <div class="platform-chip"><span>🎶</span> Douyin</div>
+        <div class="platform-chip"><span>𝕏</span> X</div>
+        <div class="platform-chip"><span>📝</span> Tumblr</div>
+        <div class="platform-chip"><span>💼</span> LinkedIn</div>
+      </div>
+    </section>
+
+    <section class="features" id="features">
+      <h2 class="section-title">Why VidoGrab?</h2>
+      <div class="features-grid">
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">⚡</div>
+          <h3>Lightning Fast</h3>
+          <p>Get download links in seconds with an optimized API pipeline.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">🎯</div>
+          <h3>Multiple Qualities</h3>
+          <p>Choose the right quality — HD, SD, or audio-only formats.</p>
+        </article>
+        <article class="feature-card">
+          <div class="feature-icon" aria-hidden="true">🔒</div>
+          <h3>Safe & Private</h3>
+          <p>We never store your links and never ask for an account.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="faq" id="faq">
+      <h2 class="section-title">Frequently Asked Questions</h2>
+      <div class="faq-list">
+        <details class="faq-item">
+          <summary>How do I download TikTok videos without watermark?</summary>
+          <p>Paste your TikTok video URL, select TikTok from the platform dropdown, and click Download Video. Choose HD — No Watermark from the results.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is VidoGrab free to use?</summary>
+          <p>Yes. VidoGrab is completely free — no registration, no subscription, and no hidden fees.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Which platforms are supported?</summary>
+          <p>TikTok, Pinterest, Douyin, X (Twitter), Tumblr, and LinkedIn. More platforms coming soon.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Do I need to install anything?</summary>
+          <p>No. VidoGrab works entirely in your browser. Just paste a link and download.</p>
+        </details>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <nav class="footer-nav" aria-label="Footer">
+      <a href="/terms.html">Terms of Service</a>
+      <a href="/privacy.html">Privacy Policy</a>
+      <a href="/contact.html">Contact Us</a>
+    </nav>
+    <p>&copy; 2026 VidoGrab — For personal use only. Respect copyright laws.</p>
+  </footer>
+
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+  <script src="app.js"></script>
+</body>
+</html>

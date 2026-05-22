@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: vidograb
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    healthCheckPath: /api/health
+    envVars:
+      - key: API_PROVIDER
+        value: ytdlp
+      - key: YTDLP_PATH
+        value: python3 -m yt_dlp
+      - key: NODE_ENV
+        value: production
