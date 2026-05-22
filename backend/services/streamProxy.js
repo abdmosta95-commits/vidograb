@@ -41,6 +41,8 @@ export async function pipeVideoStream(url, res, filename, referer) {
     headers.Referer = referer;
   } else if (/tiktokcdn|tiktokv\.com|douyinvod|douyinpic|snssdk/i.test(url)) {
     headers.Referer = 'https://www.douyin.com/';
+  } else if (/pinimg\.com/i.test(url)) {
+    headers.Referer = 'https://www.pinterest.com/';
   } else if (/tiktokcdn|tiktokv\.com/i.test(url)) {
     headers.Referer = 'https://www.tiktok.com/';
   }

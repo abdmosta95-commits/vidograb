@@ -6,17 +6,19 @@ import { fetchViaRapidApi } from './rapidApiProvider.js';
 import { fetchViaYtDlp } from './ytdlpProvider.js';
 import { fetchViaTiktok } from './tiktokProvider.js';
 import { fetchViaDouyin } from './douyinProvider.js';
+import { fetchViaPinterest } from './pinterestProvider.js';
 import { fetchMock } from './mockProvider.js';
 import { detectPlatform, validateUrl } from './platformDetector.js';
 
-const TIKWM_PLATFORMS = {
+const NATIVE_PLATFORMS = {
   tiktok: fetchViaTiktok,
   douyin: fetchViaDouyin,
+  pinterest: fetchViaPinterest,
 };
 
 async function fetchByPlatform(url, platform, config) {
-  if (TIKWM_PLATFORMS[platform]) {
-    return TIKWM_PLATFORMS[platform](url);
+  if (NATIVE_PLATFORMS[platform]) {
+    return NATIVE_PLATFORMS[platform](url);
   }
   return fetchViaYtDlp(url, config.YTDLP_PATH);
 }
