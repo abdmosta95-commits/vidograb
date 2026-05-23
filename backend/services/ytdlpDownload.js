@@ -75,6 +75,10 @@ export async function streamYtDlpDownload(sourceUrl, formatId, ytdlpPath, res, f
       else reject(new Error(stderr.slice(-300) || `yt-dlp exit ${code}`));
     });
     proc.on('error', reject);
+
+    res.on('close', () => {
+      if (!proc.killed) proc.kill('SIGTERM');
+    });
   });
 
   const safeName = sanitizeFilename(filename);
@@ -83,6 +87,8 @@ export async function streamYtDlpDownload(sourceUrl, formatId, ytdlpPath, res, f
 
   try {
     await pipeline(createReadStream(tempFile), res);
+  } catch (err) {
+    if (!res.headersSent) throw err;
   } finally {
     unlink(tempFile, () => {});
   }

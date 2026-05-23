@@ -4,9 +4,8 @@ services:
     runtime: docker
     dockerfilePath: ./Dockerfile
     dockerContext: .
-    plan: free
+    plan: starter
     healthCheckPath: /api/health
-    autoDeploy: true
     envVars:
       - key: API_PROVIDER
         value: ytdlp
@@ -14,3 +13,7 @@ services:
         value: yt-dlp
       - key: NODE_ENV
         value: production
+      - key: MAX_CONCURRENT_STREAMS
+        value: "2"
+      - key: NODE_OPTIONS
+        value: --max-old-space-size=460
