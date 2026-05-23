@@ -1,9 +1,7 @@
 FROM node:20-bookworm-slim
 
 RUN apt-get update \
-  && apt-get install -y --no-install-recommends ffmpeg python3 python3-pip \
-  && (apt-get install -y --no-install-recommends yt-dlp \
-      || pip3 install --break-system-packages yt-dlp) \
+  && apt-get install -y --no-install-recommends ffmpeg yt-dlp \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -19,9 +17,11 @@ RUN test -f server.js && test -f /frontend/index.html
 ENV NODE_ENV=production
 ENV API_PROVIDER=ytdlp
 ENV YTDLP_PATH=yt-dlp
-
-# Render sets PORT automatically — do NOT hardcode it here
+ENV NODE_OPTIONS=--max-old-space-size=400
 
 EXPOSE 10000
+
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+  CMD node -e "fetch('http://127.0.0.1:'+(process.env.PORT||10000)+'/api/health').then(r=>process.exit(r.ok?0:1)).catch(()=>process.exit(1))"
 
 CMD ["node", "server.js"]

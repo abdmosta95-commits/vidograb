@@ -6,6 +6,7 @@ services:
     dockerContext: .
     plan: free
     healthCheckPath: /api/health
+    autoDeploy: true
     envVars:
       - key: API_PROVIDER
         value: ytdlp
